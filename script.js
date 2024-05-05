@@ -28,6 +28,7 @@ window.onload = function() {
 
             var secs = Math.floor(diff / 1000);
 
+            messageElement.textContent = "No, it's not the 4th of March 😞";
             daysLeftElement.textContent = "Only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
         }
     }
