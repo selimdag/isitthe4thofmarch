@@ -9,7 +9,7 @@ window.onload = function() {
 
         if (now.getMonth() == birthday.getMonth() && now.getDate() == birthday.getDate()) {
             messageElement.textContent = "Yes, it's the 4th of March! 🎉🎂🎈";
-            imageElement.src = 'happy_picture.jpg';
+            imageElement.src = 'happy_picture.jpeg';
             daysLeftElement.textContent = "";
         } else {
             if (now > birthday) {
