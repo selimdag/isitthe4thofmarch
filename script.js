@@ -1,4 +1,4 @@
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function() {
     var messageElement = document.getElementById('message');
     var imageElement = document.getElementById('image');
     var daysLeftElement = document.getElementById('daysLeft');
@@ -16,7 +16,7 @@ window.onload = function() {
             emojiRainContainer.style.display = 'none'; // Hide raining emojis
             fireworksContainer.style.display = 'block'; // Show fireworks animation
             startFireworks(); // Start the fireworks animation
-            clearInterval(emojiRainInterval); // Stop the emoji rain
+            stopEmojiRain(); // Stop the emoji rain
         } else {
             if (now > birthday) {
                 birthday.setFullYear(birthday.getFullYear() + 1);
@@ -96,4 +96,4 @@ window.onload = function() {
         const fireworks = fireworksContainer.querySelectorAll('.firework');
         fireworks.forEach(firework => firework.remove());
     }
-}
+});
