@@ -43,6 +43,7 @@ window.onload = function() {
         var emoji = document.createElement('span');
         emoji.textContent = '😞';
         emoji.classList.add('emoji');
+        emoji.style.fontSize = '48px'; /* Increase the font size for each emoji */
         emoji.style.left = Math.random() * 100 + 'vw';
         emoji.style.animationDelay = Math.random() * -20 + 's';
         emojiRainContainer.appendChild(emoji);

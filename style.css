@@ -66,7 +66,7 @@ img:hover {
 }
 
 .emoji {
-    font-size: 24px;
+    font-size: 36px; /* Increase the font size */
     position: absolute;
     animation: emojiRain 5s linear infinite;
 }
