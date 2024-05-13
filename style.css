@@ -49,6 +49,33 @@ img:hover {
     transform: scale(1.1);
 }
 
+#emojiRain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.emoji {
+    font-size: 36px;
+    position: absolute;
+    animation: emojiRain 5s linear infinite;
+}
+
+@keyframes emojiRain {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+}
+
 @media (max-width: 768px) {
     #content {
         width: 90%;
@@ -87,66 +114,5 @@ img:hover {
 
     img {
         max-width: 150px;
-    }
-}
-
-#emojiRain {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Allow clicking through the emojis */
-    z-index: 1; /* Ensure the emojis are on top of other elements */
-}
-
-.emoji {
-    font-size: 36px; 
-    position: absolute;
-    animation: emojiRain 5s linear infinite;
-}
-
-@keyframes emojiRain {
-    0% {
-        transform: translateY(-100vh);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 1;
-    }
-}
-
-#fireworks {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2;
-    display: none; /* Initially hidden */
-}
-
-.firework {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #FFA500;
-    animation: fireworks 2s infinite;
-}
-
-@keyframes fireworks {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px)) scale(2);
-        opacity: 0;
     }
 }

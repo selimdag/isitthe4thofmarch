@@ -3,7 +3,6 @@ window.onload = function() {
     var imageElement = document.getElementById('image');
     var daysLeftElement = document.getElementById('daysLeft');
     var emojiRainContainer = document.getElementById('emojiRain');
-    var fireworksContainer = document.getElementById('fireworks');
 
     function updateCountdown() {
         var now = new Date();
@@ -13,9 +12,6 @@ window.onload = function() {
             messageElement.textContent = "Yes, today is the 4th of March! 🎉🎂🎈";
             imageElement.src = 'happy_picture.jpeg';
             daysLeftElement.textContent = "";
-            emojiRainContainer.style.display = 'none'; // Hide raining emojis
-            fireworksContainer.style.display = 'block'; // Show fireworks animation
-            startFireworks(); // Start the fireworks animation
         } else {
             if (now > birthday) {
                 birthday.setFullYear(birthday.getFullYear() + 1);
@@ -33,14 +29,11 @@ window.onload = function() {
             messageElement.textContent = "No, it's not the 4th of March yet 😞";
             imageElement.src = 'sad_picture.jpeg';
             daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
-            emojiRainContainer.style.display = 'block'; // Show raining emojis
-            fireworksContainer.style.display = 'none'; // Hide fireworks animation
-            stopFireworks(); // Stop the fireworks animation
         }
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000); // Update the countdown every 1 second
+    setInterval(updateCountdown, 1000);
 
     // Create and animate emojis
     function createEmoji() {
@@ -51,7 +44,7 @@ window.onload = function() {
         // Adjust emoji font size based on screen width
         var screenWidth = window.innerWidth;
         if (screenWidth <= 480) {
-            emoji.style.fontSize = '30px';
+            emoji.style.fontSize = '24px';
         } else if (screenWidth <= 768) {
             emoji.style.fontSize = '36px';
         } else {
@@ -68,19 +61,4 @@ window.onload = function() {
     }
 
     setInterval(createEmoji, 500);
-
-    function startFireworks() {
-        for (let i = 0; i < 100; i++) {
-            const firework = document.createElement('div');
-            firework.classList.add('firework');
-            firework.style.setProperty('--x', Math.random() * 100);
-            firework.style.setProperty('--y', Math.random() * 100);
-            fireworksContainer.appendChild(firework);
-        }
-    }
-
-    function stopFireworks() {
-        const fireworks = fireworksContainer.querySelectorAll('.firework');
-        fireworks.forEach(firework => firework.remove());
-    }
 }
