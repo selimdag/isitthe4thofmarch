@@ -43,7 +43,17 @@ window.onload = function() {
         var emoji = document.createElement('span');
         emoji.textContent = '😞';
         emoji.classList.add('emoji');
-        emoji.style.fontSize = '48px'; /* Increase the font size for each emoji */
+
+        // Adjust emoji font size based on screen width
+        var screenWidth = window.innerWidth;
+        if (screenWidth <= 480) {
+            emoji.style.fontSize = '30px';
+        } else if (screenWidth <= 768) {
+            emoji.style.fontSize = '36px';
+        } else {
+            emoji.style.fontSize = '48px';
+        }
+
         emoji.style.left = Math.random() * 100 + 'vw';
         emoji.style.animationDelay = Math.random() * -20 + 's';
         emojiRainContainer.appendChild(emoji);

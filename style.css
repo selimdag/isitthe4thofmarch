@@ -52,6 +52,41 @@ img:hover {
 @media (max-width: 768px) {
     #content {
         width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    img {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    img {
+        max-width: 150px;
     }
 }
 
@@ -66,7 +101,7 @@ img:hover {
 }
 
 .emoji {
-    font-size: 36px; /* Increase the font size */
+    font-size: 36px; 
     position: absolute;
     animation: emojiRain 5s linear infinite;
 }
