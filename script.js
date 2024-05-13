@@ -36,4 +36,20 @@ window.onload = function() {
 
     updateCountdown();
     setInterval(updateCountdown, 1000); // Update the countdown every 1 second
+
+    // Create and animate emojis
+    function createEmoji() {
+        var emoji = document.createElement('span');
+        emoji.textContent = '😞';
+        emoji.classList.add('emoji');
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.animationDelay = Math.random() * -20 + 's';
+        emojiRainContainer.appendChild(emoji);
+
+        setTimeout(function() {
+            emoji.remove();
+        }, 5000);
+    }
+
+    setInterval(createEmoji, 500);
 }

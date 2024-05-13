@@ -54,3 +54,30 @@ img:hover {
         width: 90%;
     }
 }
+
+#emojiRain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicking through the emojis */
+    z-index: 1; /* Ensure the emojis are on top of other elements */
+}
+
+.emoji {
+    font-size: 24px;
+    position: absolute;
+    animation: emojiRain 5s linear infinite;
+}
+
+@keyframes emojiRain {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+}
