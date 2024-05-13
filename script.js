@@ -5,12 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var emojiRainContainer = document.getElementById('emojiRain');
     var fireworksContainer = document.getElementById('fireworks');
 
-    // Check if the containers exist before proceeding
-    if (!emojiRainContainer || !fireworksContainer) {
-        console.error('Error: Could not find emojiRainContainer or fireworksContainer elements.');
-        return;
-    }
-
     function updateCountdown() {
         var now = new Date();
         var birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
