@@ -16,6 +16,7 @@ window.onload = function() {
             emojiRainContainer.style.display = 'none'; // Hide raining emojis
             fireworksContainer.style.display = 'block'; // Show fireworks animation
             startFireworks(); // Start the fireworks animation
+            clearInterval(emojiRainInterval); // Stop the emoji rain
         } else {
             if (now > birthday) {
                 birthday.setFullYear(birthday.getFullYear() + 1);
@@ -36,13 +37,25 @@ window.onload = function() {
             emojiRainContainer.style.display = 'block'; // Show raining emojis
             fireworksContainer.style.display = 'none'; // Hide fireworks animation
             stopFireworks(); // Stop the fireworks animation
+            startEmojiRain(); // Start the emoji rain
         }
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Create and animate emojis
+    // Emoji rain
+    var emojiRainInterval;
+
+    function startEmojiRain() {
+        clearInterval(emojiRainInterval); // Clear any existing interval
+        emojiRainInterval = setInterval(createEmoji, 500);
+    }
+
+    function stopEmojiRain() {
+        clearInterval(emojiRainInterval);
+    }
+
     function createEmoji() {
         var emoji = document.createElement('span');
         emoji.textContent = '😞';
@@ -51,7 +64,7 @@ window.onload = function() {
         // Adjust emoji font size based on screen width
         var screenWidth = window.innerWidth;
         if (screenWidth <= 480) {
-            emoji.style.fontSize = '30px';
+            emoji.style.fontSize = '24px';
         } else if (screenWidth <= 768) {
             emoji.style.fontSize = '36px';
         } else {
@@ -67,11 +80,9 @@ window.onload = function() {
         }, 5000);
     }
 
-    var emojiInterval = setInterval(createEmoji, 500);
-
     // Fireworks animation
     function startFireworks() {
-        clearInterval(emojiInterval); // Stop the emoji rain
+        stopEmojiRain(); // Stop the emoji rain
         for (let i = 0; i < 100; i++) {
             const firework = document.createElement('div');
             firework.classList.add('firework');
@@ -84,6 +95,5 @@ window.onload = function() {
     function stopFireworks() {
         const fireworks = fireworksContainer.querySelectorAll('.firework');
         fireworks.forEach(firework => firework.remove());
-        emojiInterval = setInterval(createEmoji, 500); // Restart the emoji rain
     }
 }
