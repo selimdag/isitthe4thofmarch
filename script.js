@@ -40,7 +40,7 @@ window.onload = function() {
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 1000); // Update the countdown every 1 second
 
     // Create and animate emojis
     function createEmoji() {
@@ -67,11 +67,9 @@ window.onload = function() {
         }, 5000);
     }
 
-    var emojiInterval = setInterval(createEmoji, 500);
+    setInterval(createEmoji, 500);
 
-    // Fireworks animation
     function startFireworks() {
-        clearInterval(emojiInterval); // Stop the emoji rain
         for (let i = 0; i < 100; i++) {
             const firework = document.createElement('div');
             firework.classList.add('firework');
@@ -84,6 +82,5 @@ window.onload = function() {
     function stopFireworks() {
         const fireworks = fireworksContainer.querySelectorAll('.firework');
         fireworks.forEach(firework => firework.remove());
-        emojiInterval = setInterval(createEmoji, 500); // Restart the emoji rain
     }
 }
