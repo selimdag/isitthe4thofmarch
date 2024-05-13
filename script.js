@@ -2,6 +2,7 @@ window.onload = function() {
     var messageElement = document.getElementById('message');
     var imageElement = document.getElementById('image');
     var daysLeftElement = document.getElementById('daysLeft');
+    var emojiRainContainer = document.getElementById('emojiRain');
 
     function updateCountdown() {
         var now = new Date();
