@@ -32,7 +32,7 @@ window.onload = function() {
             diff -= mins * (1000 * 60);
             var secs = Math.floor(diff / 1000);
 
-            messageElement.textContent = "No, it's not the 4th of March yet 😔";
+            messageElement.textContent = "No, it's not the 4th of March yet 😒";
             imageElement.src = 'sad_picture.jpeg';
             daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
             createEmojiRain(['🥺', '😔', '🙄', '😒', '😞']);
@@ -43,17 +43,15 @@ window.onload = function() {
         setInterval(function() {
             var emoji = emojis[Math.floor(Math.random() * emojis.length)];
             var left = Math.random() * 100;
-            var animationDelay = Math.random() * 10;
+            var animationDuration = 10 + Math.random() * 5; // Randomize duration between 10s and 15s
             var emojiElement = document.createElement('div');
             emojiElement.className = 'emoji';
             emojiElement.style.left = `${left}vw`;
-            emojiElement.style.animationDelay = `-${animationDelay}s`;
+            emojiElement.style.animationDuration = `${animationDuration}s`;
             emojiElement.textContent = emoji;
             emojiElement.addEventListener('animationend', function() {
-                console.log('Removing emoji:', emojiElement.textContent);
                 emojiElement.remove();
             });
-            console.log('Adding emoji:', emojiElement.textContent);
             emojiRainContainer.appendChild(emojiElement);
         }, 200); // Adjust this interval for density of emojis
     }
