@@ -41,30 +41,14 @@ window.onload = function() {
 
     function createEmojiRain(emojis) {
         emojiRainContainer.innerHTML = '';
-        var screenHeight = window.innerHeight;
-
-        function createEmoji() {
-            var emoji = document.createElement('div');
-            emoji.className = 'emoji';
-            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            emoji.style.left = Math.random() * 100 + '%';
-            emoji.style.top = -100 + 'px';
-            emoji.style.animationDuration = (Math.random() * 3 + 5) + 's'; // Between 5-8 seconds
-            emojiRainContainer.appendChild(emoji);
-
-            var animationDuration = parseFloat(emoji.style.animationDuration) * 1000;
-            setTimeout(() => {
-                emoji.remove();
-            }, animationDuration);
+        var emojiString = '';
+        for (var i = 0; i < 50; i++) {
+            var emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            var left = Math.random() * 100;
+            var animationDelay = Math.random() * 5;
+            emojiString += `<div class="emoji" style="left: ${left}vw; animation-delay: -${animationDelay}s;">${emoji}</div>`;
         }
-
-        // Create initial set of emojis
-        for (var i = 0; i < 30; i++) {
-            setTimeout(createEmoji, i * 200);
-        }
-
-        // Continuously create new emojis
-        setInterval(createEmoji, 300);
+        emojiRainContainer.innerHTML = emojiString;
     }
 
     updateCountdown();
