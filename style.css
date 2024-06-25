@@ -64,17 +64,16 @@ img:hover {
 
 .emoji {
     position: absolute;
-    top: -50px;
-    font-size: 24px;
-    animation: fall linear infinite;
+    font-size: 48px;
+    animation: fall linear;
 }
 
 @keyframes fall {
     0% {
-        transform: translateY(-50px);
+        transform: translateY(0);
     }
     100% {
-        transform: translateY(calc(100vh + 50px));
+        transform: translateY(calc(100vh + 100px));
     }
 }
 
@@ -101,7 +100,7 @@ img:hover {
     }
 
     .emoji {
-        font-size: 20px;
+        font-size: 36px;
     }
 }
 
@@ -123,6 +122,6 @@ img:hover {
     }
 
     .emoji {
-        font-size: 16px;
+        font-size: 24px;
     }
 }
