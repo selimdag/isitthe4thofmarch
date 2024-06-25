@@ -12,10 +12,12 @@ window.onload = function() {
             messageElement.textContent = "Yes, today is the 4th of March! 🎉🎂🎈";
             imageElement.src = 'happy_picture.jpeg';
             daysLeftElement.textContent = "";
+            createEmojiRain(['🎊', '🎉', '🍸', '🍹', '🍾', '👯‍♀️', '🎂', '🥳', '🎆']);
         } else if (now.getMonth() == 7 && now.getDate() == 3) {
             messageElement.textContent = "No, it's not the 4th of March yet. But it's 3rd August. Johanna is 11111 days old today!!! 🥳";
             imageElement.src = 'happy_picture.jpeg';
             daysLeftElement.textContent = "";
+            createEmojiRain(['🎊', '🎉', '🍸', '🍹', '🍾', '👯‍♀️', '🎂', '🥳', '🎆']);
         } else {
             if (now > birthday) {
                 birthday.setFullYear(birthday.getFullYear() + 1);
@@ -33,36 +35,42 @@ window.onload = function() {
             messageElement.textContent = "No, it's not the 4th of March yet 😞";
             imageElement.src = 'sad_picture.jpeg';
             daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
+            createEmojiRain(['🥺', '😔', '🙄', '😒', '😞']);
         }
+    }
+
+    function createEmojiRain(emojis) {
+        // Clear existing emojis
+        emojiRainContainer.innerHTML = '';
+
+        // Create and animate emojis
+        function createEmoji() {
+            var emoji = document.createElement('span');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.classList.add('emoji');
+
+            // Adjust emoji font size based on screen width
+            var screenWidth = window.innerWidth;
+            if (screenWidth <= 480) {
+                emoji.style.fontSize = '24px';
+            } else if (screenWidth <= 768) {
+                emoji.style.fontSize = '36px';
+            } else {
+                emoji.style.fontSize = '48px';
+            }
+
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDelay = Math.random() * -20 + 's';
+            emojiRainContainer.appendChild(emoji);
+
+            setTimeout(function() {
+                emoji.remove();
+            }, 5000);
+        }
+
+        setInterval(createEmoji, 500);
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    // Create and animate emojis
-    function createEmoji() {
-        var emoji = document.createElement('span');
-        emoji.textContent = '😞';
-        emoji.classList.add('emoji');
-
-        // Adjust emoji font size based on screen width
-        var screenWidth = window.innerWidth;
-        if (screenWidth <= 480) {
-            emoji.style.fontSize = '24px';
-        } else if (screenWidth <= 768) {
-            emoji.style.fontSize = '36px';
-        } else {
-            emoji.style.fontSize = '48px';
-        }
-
-        emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.animationDelay = Math.random() * -20 + 's';
-        emojiRainContainer.appendChild(emoji);
-
-        setTimeout(function() {
-            emoji.remove();
-        }, 5000);
-    }
-
-    setInterval(createEmoji, 500);
 }
