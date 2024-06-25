@@ -3,13 +3,10 @@ window.onload = function() {
     var imageElement = document.getElementById('image');
     var daysLeftElement = document.getElementById('daysLeft');
     var emojiRainContainer = document.getElementById('emojiRain');
-    var emojiInterval;
 
     function updateCountdown() {
         var now = new Date();
         var birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
-
-        clearInterval(emojiInterval); // Clear any existing emoji intervals
 
         if (now.getMonth() == 2 && now.getDate() == 4) {
             messageElement.textContent = "Yes, today is the 4th of March! 🎉🎂🎈";
@@ -63,16 +60,15 @@ window.onload = function() {
             }
 
             emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.top = '-10vh'; // Start the emoji off-screen
-            emoji.style.animationDelay = Math.random() * 5 + 's'; // Stagger start times
+            emoji.style.animationDelay = Math.random() * -20 + 's';
             emojiRainContainer.appendChild(emoji);
 
             setTimeout(function() {
                 emoji.remove();
-            }, 7000); // Extend the duration to ensure emojis fall all the way down
+            }, 5000);
         }
 
-        emojiInterval = setInterval(createEmoji, 300); // Increase frequency to make the rain more continuous
+        setInterval(createEmoji, 500);
     }
 
     updateCountdown();
