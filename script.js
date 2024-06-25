@@ -3,10 +3,13 @@ window.onload = function() {
     var imageElement = document.getElementById('image');
     var daysLeftElement = document.getElementById('daysLeft');
     var emojiRainContainer = document.getElementById('emojiRain');
+    var emojiInterval;
 
     function updateCountdown() {
         var now = new Date();
         var birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
+
+        clearInterval(emojiInterval); // Clear any existing emoji intervals
 
         if (now.getMonth() == 2 && now.getDate() == 4) {
             messageElement.textContent = "Yes, today is the 4th of March! 🎉🎂🎈";
@@ -69,7 +72,7 @@ window.onload = function() {
             }, 7000); // Extend the duration to ensure emojis fall all the way down
         }
 
-        setInterval(createEmoji, 300); // Increase frequency to make the rain more continuous
+        emojiInterval = setInterval(createEmoji, 300); // Increase frequency to make the rain more continuous
     }
 
     updateCountdown();
