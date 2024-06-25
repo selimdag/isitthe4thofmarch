@@ -57,21 +57,22 @@ img:hover {
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
 }
 
 .emoji {
     font-size: 36px;
     position: absolute;
-    animation: emojiRain 5s linear infinite;
+    animation: emojiRain 7s linear infinite;
 }
 
 @keyframes emojiRain {
     0% {
-        transform: translateY(-100vh);
-        opacity: 0;
+        transform: translateY(-10vh);
+        opacity: 1;
     }
     100% {
-        transform: translateY(100vh);
+        transform: translateY(110vh);
         opacity: 1;
     }
 }

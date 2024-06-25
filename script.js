@@ -60,15 +60,16 @@ window.onload = function() {
             }
 
             emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.animationDelay = Math.random() * -20 + 's';
+            emoji.style.top = '-10vh'; // Start the emoji off-screen
+            emoji.style.animationDelay = Math.random() * 5 + 's'; // Stagger start times
             emojiRainContainer.appendChild(emoji);
 
             setTimeout(function() {
                 emoji.remove();
-            }, 5000);
+            }, 7000); // Extend the duration to ensure emojis fall all the way down
         }
 
-        setInterval(createEmoji, 500);
+        setInterval(createEmoji, 300); // Increase frequency to make the rain more continuous
     }
 
     updateCountdown();
