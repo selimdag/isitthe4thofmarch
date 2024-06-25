@@ -40,9 +40,8 @@ window.onload = function() {
     }
 
     function createEmojiRain(emojis) {
-        var maxEmojis = 20; // Maximum number of emojis on screen at once
-        var animationDuration = 8; // seconds
-        var creationInterval = 400; // milliseconds
+        var maxEmojis = 50; // Increased number of emojis
+        var creationInterval = 200; // milliseconds
 
         function createEmoji() {
             if (emojiRainContainer.children.length >= maxEmojis) {
@@ -63,7 +62,7 @@ window.onload = function() {
             }
 
             emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.animationDuration = animationDuration + 's';
+            emoji.style.animationDuration = (Math.random() * 3 + 5) + 's'; // Random duration between 5-8s
             emoji.style.top = -50 + 'px';
 
             emojiRainContainer.appendChild(emoji);
