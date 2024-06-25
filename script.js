@@ -34,7 +34,7 @@ window.onload = function() {
 
             messageElement.textContent = "No, it's not the 4th of March yet 😒";
             imageElement.src = 'sad_picture.jpeg';
-            daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
+            daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs " seconds left!";
             createEmojiRain(['🥺', '😔', '🙄', '😒', '😞']);
         }
     }
@@ -45,7 +45,7 @@ window.onload = function() {
         for (var i = 0; i < 50; i++) {
             var emoji = emojis[Math.floor(Math.random() * emojis.length)];
             var left = Math.random() * 100;
-            var animationDelay = Math.random() * 5;
+            var animationDelay = Math.random() * 10; // Adjusted for smoother animation
             emojiString += `<div class="emoji" style="left: ${left}vw; animation-delay: -${animationDelay}s;">${emoji}</div>`;
         }
         emojiRainContainer.innerHTML = emojiString;

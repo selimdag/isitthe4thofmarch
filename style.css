@@ -65,15 +65,21 @@ img:hover {
 .emoji {
     position: absolute;
     font-size: 48px;
-    animation: fall 5s linear infinite;
+    animation: fall 10s linear infinite;
+    opacity: 0;
 }
 
 @keyframes fall {
     0% {
         transform: translateY(-100px);
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
     }
     100% {
         transform: translateY(calc(100vh + 100px));
+        opacity: 0;
     }
 }
 
