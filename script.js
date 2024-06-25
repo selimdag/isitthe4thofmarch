@@ -49,12 +49,10 @@ window.onload = function() {
             emojiElement.style.left = `${left}vw`;
             emojiElement.style.animationDelay = `-${animationDelay}s`;
             emojiElement.textContent = emoji;
-            emojiRainContainer.appendChild(emojiElement);
-
-            // Remove emoji after animation ends
-            setTimeout(function() {
+            emojiElement.addEventListener('animationend', function() {
                 emojiElement.remove();
-            }, 10000); // Match the duration of the fall animation
+            });
+            emojiRainContainer.appendChild(emojiElement);
         }, 200); // Adjust this interval for density of emojis
     }
 
