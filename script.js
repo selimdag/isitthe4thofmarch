@@ -60,15 +60,23 @@ window.onload = function() {
             }
 
             emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.animationDelay = Math.random() * -20 + 's';
+            emoji.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Random duration between 2-5s
+            emoji.style.top = '-50px'; // Start above the screen
             emojiRainContainer.appendChild(emoji);
 
-            setTimeout(function() {
+            // Remove emoji after animation completes
+            emoji.addEventListener('animationend', function() {
                 emoji.remove();
-            }, 5000);
+            });
         }
 
-        setInterval(createEmoji, 500);
+        // Create initial set of emojis
+        for (var i = 0; i < 50; i++) {
+            setTimeout(createEmoji, Math.random() * 5000);
+        }
+
+        // Continuously create new emojis
+        setInterval(createEmoji, 200);
     }
 
     updateCountdown();

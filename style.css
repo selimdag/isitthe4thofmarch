@@ -8,6 +8,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 #content {
@@ -17,6 +18,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     width: 80%;
+    z-index: 2;
 }
 
 h1 {
@@ -62,17 +64,17 @@ img:hover {
 .emoji {
     font-size: 36px;
     position: absolute;
-    animation: emojiRain 5s linear infinite;
+    animation: emojiRain linear;
 }
 
 @keyframes emojiRain {
     0% {
-        transform: translateY(-100vh);
-        opacity: 0;
+        transform: translateY(-50px);
+        opacity: 1;
     }
     100% {
         transform: translateY(100vh);
-        opacity: 1;
+        opacity: 0;
     }
 }
 
