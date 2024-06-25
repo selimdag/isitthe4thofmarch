@@ -8,8 +8,12 @@ window.onload = function() {
         var now = new Date();
         var birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
 
-        if (now.getMonth() == birthday.getMonth() && now.getDate() == birthday.getDate()) {
+        if (now.getMonth() == 2 && now.getDate() == 4) {
             messageElement.textContent = "Yes, today is the 4th of March! 🎉🎂🎈";
+            imageElement.src = 'happy_picture.jpeg';
+            daysLeftElement.textContent = "";
+        } else if (now.getMonth() == 7 && now.getDate() == 3) {
+            messageElement.textContent = "No, it's not the 4th of March yet. But it's 3rd August. Johanna is 11111 days old today!!! 🥳";
             imageElement.src = 'happy_picture.jpeg';
             daysLeftElement.textContent = "";
         } else {
