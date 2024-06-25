@@ -59,20 +59,22 @@ img:hover {
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
 }
 
 .emoji {
     position: absolute;
-    animation: emojiRain linear forwards;
-    animation-duration: var(--fall-duration);
+    top: -50px;
+    font-size: 24px;
+    animation: fall linear infinite;
 }
 
-@keyframes emojiRain {
-    from {
-        transform: translateY(0);
+@keyframes fall {
+    0% {
+        transform: translateY(-50px);
     }
-    to {
-        transform: translateY(120vh);
+    100% {
+        transform: translateY(calc(100vh + 50px));
     }
 }
 
@@ -97,6 +99,10 @@ img:hover {
     img {
         max-width: 200px;
     }
+
+    .emoji {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -114,5 +120,9 @@ img:hover {
 
     img {
         max-width: 150px;
+    }
+
+    .emoji {
+        font-size: 16px;
     }
 }

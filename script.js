@@ -32,7 +32,7 @@ window.onload = function() {
             diff -= mins * (1000 * 60);
             var secs = Math.floor(diff / 1000);
 
-            messageElement.textContent = "No, it's not the 4th of March yet 😒";
+            messageElement.textContent = "No, it's not the 4th of March yet 😞";
             imageElement.src = 'sad_picture.jpeg';
             daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
             createEmojiRain(['🥺', '😔', '🙄', '😒', '😞']);
@@ -40,54 +40,16 @@ window.onload = function() {
     }
 
     function createEmojiRain(emojis) {
-        var maxEmojis = 30;
-        var creationInterval = 300; // milliseconds
-
-        function createEmoji() {
-            if (emojiRainContainer.children.length >= maxEmojis) {
-                return;
-            }
-
-            var emoji = document.createElement('span');
-            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            emoji.classList.add('emoji');
-
-            var screenWidth = window.innerWidth;
-            var screenHeight = window.innerHeight;
-
-            if (screenWidth <= 480) {
-                emoji.style.fontSize = '24px';
-            } else if (screenWidth <= 768) {
-                emoji.style.fontSize = '36px';
-            } else {
-                emoji.style.fontSize = '48px';
-            }
-
-            emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.top = (Math.random() * -50) + 'px'; // Start slightly above the screen
-            
-            // Set a random fall duration
-            var fallDuration = Math.random() * 5 + 5; // 5-10 seconds
-            emoji.style.setProperty('--fall-duration', fallDuration + 's');
-
-            emojiRainContainer.appendChild(emoji);
-
-            // Remove emoji after it falls off the screen
-            setTimeout(() => {
-                emoji.remove();
-            }, fallDuration * 1000);
-        }
-
-        // Clear any existing emojis
         emojiRainContainer.innerHTML = '';
-
-        // Create initial set of emojis
-        for (var i = 0; i < maxEmojis; i++) {
-            setTimeout(createEmoji, i * (creationInterval / 2));
+        for (var i = 0; i < 50; i++) {
+            var emoji = document.createElement('div');
+            emoji.className = 'emoji';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Between 2-5 seconds
+            emoji.style.animationDelay = (Math.random() * 5) + 's'; // Delay up to 5 seconds
+            emojiRainContainer.appendChild(emoji);
         }
-
-        // Continuously create new emojis
-        setInterval(createEmoji, creationInterval);
     }
 
     updateCountdown();
