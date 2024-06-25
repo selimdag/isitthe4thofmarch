@@ -32,7 +32,7 @@ window.onload = function() {
             diff -= mins * (1000 * 60);
             var secs = Math.floor(diff / 1000);
 
-            messageElement.textContent = "No, it's not the 4th of March yet 😒";
+            messageElement.textContent = "No, it's not the 4th of March yet 🙄";
             imageElement.src = 'sad_picture.jpeg';
             daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
             createEmojiRain(['🥺', '😔', '🙄', '😒', '😞']);
