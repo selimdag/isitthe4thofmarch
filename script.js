@@ -40,15 +40,22 @@ window.onload = function() {
     }
 
     function createEmojiRain(emojis) {
-        emojiRainContainer.innerHTML = '';
-        var emojiString = '';
-        for (var i = 0; i < 50; i++) {
+        setInterval(function() {
             var emoji = emojis[Math.floor(Math.random() * emojis.length)];
             var left = Math.random() * 100;
-            var animationDelay = Math.random() * 10; // Adjusted for smoother animation
-            emojiString += `<div class="emoji" style="left: ${left}vw; animation-delay: -${animationDelay}s;">${emoji}</div>`;
-        }
-        emojiRainContainer.innerHTML = emojiString;
+            var animationDelay = Math.random() * 10;
+            var emojiElement = document.createElement('div');
+            emojiElement.className = 'emoji';
+            emojiElement.style.left = `${left}vw`;
+            emojiElement.style.animationDelay = `-${animationDelay}s`;
+            emojiElement.textContent = emoji;
+            emojiRainContainer.appendChild(emojiElement);
+
+            // Remove emoji after animation ends
+            setTimeout(function() {
+                emojiElement.remove();
+            }, 10000); // Match the duration of the fall animation
+        }, 200); // Adjust this interval for density of emojis
     }
 
     updateCountdown();

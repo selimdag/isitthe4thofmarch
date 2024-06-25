@@ -66,7 +66,7 @@ img:hover {
     position: absolute;
     font-size: 48px;
     animation: fall 10s linear infinite;
-    opacity: 0;
+    opacity: 1;
 }
 
 @keyframes fall {
@@ -74,12 +74,9 @@ img:hover {
         transform: translateY(-100px);
         opacity: 1;
     }
-    80% {
-        opacity: 1;
-    }
     100% {
         transform: translateY(calc(100vh + 100px));
-        opacity: 0;
+        opacity: 1;
     }
 }
 
