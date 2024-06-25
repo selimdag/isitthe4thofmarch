@@ -64,14 +64,15 @@ img:hover {
 .emoji {
     position: absolute;
     animation: emojiRain linear forwards;
+    animation-duration: var(--fall-duration);
 }
 
 @keyframes emojiRain {
     from {
-        transform: translateY(-50px);
+        transform: translateY(0);
     }
     to {
-        transform: translateY(calc(100vh + 50px));
+        transform: translateY(120vh);
     }
 }
 

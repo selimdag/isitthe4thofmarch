@@ -32,7 +32,7 @@ window.onload = function() {
             diff -= mins * (1000 * 60);
             var secs = Math.floor(diff / 1000);
 
-            messageElement.textContent = "No, it's not the 4th of March yet 😞";
+            messageElement.textContent = "No, it's not the 4th of March yet 😒";
             imageElement.src = 'sad_picture.jpeg';
             daysLeftElement.textContent = "But only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left!";
             createEmojiRain(['🥺', '😔', '🙄', '😒', '😞']);
@@ -40,12 +40,12 @@ window.onload = function() {
     }
 
     function createEmojiRain(emojis) {
-        var maxEmojis = 50; // Increased number of emojis
-        var creationInterval = 200; // milliseconds
+        var maxEmojis = 30;
+        var creationInterval = 300; // milliseconds
 
         function createEmoji() {
             if (emojiRainContainer.children.length >= maxEmojis) {
-                return; // Don't create new emoji if we've reached the maximum
+                return;
             }
 
             var emoji = document.createElement('span');
@@ -53,6 +53,8 @@ window.onload = function() {
             emoji.classList.add('emoji');
 
             var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+
             if (screenWidth <= 480) {
                 emoji.style.fontSize = '24px';
             } else if (screenWidth <= 768) {
@@ -62,14 +64,18 @@ window.onload = function() {
             }
 
             emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.animationDuration = (Math.random() * 3 + 5) + 's'; // Random duration between 5-8s
-            emoji.style.top = -50 + 'px';
+            emoji.style.top = (Math.random() * -50) + 'px'; // Start slightly above the screen
+            
+            // Set a random fall duration
+            var fallDuration = Math.random() * 5 + 5; // 5-10 seconds
+            emoji.style.setProperty('--fall-duration', fallDuration + 's');
 
             emojiRainContainer.appendChild(emoji);
 
-            emoji.addEventListener('animationend', function() {
+            // Remove emoji after it falls off the screen
+            setTimeout(() => {
                 emoji.remove();
-            });
+            }, fallDuration * 1000);
         }
 
         // Clear any existing emojis
