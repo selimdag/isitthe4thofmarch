@@ -40,11 +40,15 @@ window.onload = function() {
     }
 
     function createEmojiRain(emojis) {
-        var emojiCount = 20; // Reduced from 50 to 20
+        var maxEmojis = 20; // Maximum number of emojis on screen at once
         var animationDuration = 8; // seconds
-        var creationInterval = 800; // milliseconds, increased from about 160 to 800
+        var creationInterval = 400; // milliseconds
 
         function createEmoji() {
+            if (emojiRainContainer.children.length >= maxEmojis) {
+                return; // Don't create new emoji if we've reached the maximum
+            }
+
             var emoji = document.createElement('span');
             emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             emoji.classList.add('emoji');
@@ -64,14 +68,17 @@ window.onload = function() {
 
             emojiRainContainer.appendChild(emoji);
 
-            setTimeout(() => {
+            emoji.addEventListener('animationend', function() {
                 emoji.remove();
-            }, animationDuration * 1000);
+            });
         }
 
+        // Clear any existing emojis
+        emojiRainContainer.innerHTML = '';
+
         // Create initial set of emojis
-        for (var i = 0; i < emojiCount; i++) {
-            setTimeout(createEmoji, i * creationInterval);
+        for (var i = 0; i < maxEmojis; i++) {
+            setTimeout(createEmoji, i * (creationInterval / 2));
         }
 
         // Continuously create new emojis
