@@ -50,8 +50,10 @@ window.onload = function() {
             emojiElement.style.animationDelay = `-${animationDelay}s`;
             emojiElement.textContent = emoji;
             emojiElement.addEventListener('animationend', function() {
+                console.log('Removing emoji:', emojiElement.textContent);
                 emojiElement.remove();
             });
+            console.log('Adding emoji:', emojiElement.textContent);
             emojiRainContainer.appendChild(emojiElement);
         }, 200); // Adjust this interval for density of emojis
     }
