@@ -40,16 +40,14 @@ window.onload = function() {
     }
 
     function createEmojiRain(emojis) {
-        // Clear existing emojis
-        emojiRainContainer.innerHTML = '';
+        var emojiCount = 50;
+        var animationDuration = 8; // seconds
 
-        // Create and animate emojis
         function createEmoji() {
             var emoji = document.createElement('span');
             emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             emoji.classList.add('emoji');
 
-            // Adjust emoji font size based on screen width
             var screenWidth = window.innerWidth;
             if (screenWidth <= 480) {
                 emoji.style.fontSize = '24px';
@@ -60,23 +58,23 @@ window.onload = function() {
             }
 
             emoji.style.left = Math.random() * 100 + 'vw';
-            emoji.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Random duration between 2-5s
-            emoji.style.top = '-50px'; // Start above the screen
+            emoji.style.animationDuration = animationDuration + 's';
+            emoji.style.top = -50 + 'px';
+
             emojiRainContainer.appendChild(emoji);
 
-            // Remove emoji after animation completes
-            emoji.addEventListener('animationend', function() {
+            setTimeout(() => {
                 emoji.remove();
-            });
+            }, animationDuration * 1000);
         }
 
         // Create initial set of emojis
-        for (var i = 0; i < 50; i++) {
-            setTimeout(createEmoji, Math.random() * 5000);
+        for (var i = 0; i < emojiCount; i++) {
+            setTimeout(createEmoji, (i / emojiCount) * animationDuration * 1000);
         }
 
         // Continuously create new emojis
-        setInterval(createEmoji, 200);
+        setInterval(createEmoji, (animationDuration * 1000) / emojiCount);
     }
 
     updateCountdown();
