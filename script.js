@@ -40,8 +40,9 @@ window.onload = function() {
     }
 
     function createEmojiRain(emojis) {
-        var emojiCount = 50;
+        var emojiCount = 20; // Reduced from 50 to 20
         var animationDuration = 8; // seconds
+        var creationInterval = 800; // milliseconds, increased from about 160 to 800
 
         function createEmoji() {
             var emoji = document.createElement('span');
@@ -70,11 +71,11 @@ window.onload = function() {
 
         // Create initial set of emojis
         for (var i = 0; i < emojiCount; i++) {
-            setTimeout(createEmoji, (i / emojiCount) * animationDuration * 1000);
+            setTimeout(createEmoji, i * creationInterval);
         }
 
         // Continuously create new emojis
-        setInterval(createEmoji, (animationDuration * 1000) / emojiCount);
+        setInterval(createEmoji, creationInterval);
     }
 
     updateCountdown();
