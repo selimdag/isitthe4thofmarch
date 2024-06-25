@@ -64,6 +64,7 @@ img:hover {
 
 .emoji {
     position: absolute;
+    top: -50px; /* Ensure emojis start above the visible area */
     font-size: 48px;
     animation: fall 10s linear infinite;
     opacity: 1;
