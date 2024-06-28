@@ -41,7 +41,7 @@ p {
 }
 
 img {
-    max-width: 300px;
+    max-width: 400px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
@@ -66,7 +66,7 @@ img:hover {
     position: absolute;
     top: -50px; /* Ensure emojis start above the visible area */
     font-size: 48px;
-    animation: fall linear infinite;
+    animation: fall linear;
     opacity: 1;
 }
 
