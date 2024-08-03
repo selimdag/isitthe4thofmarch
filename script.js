@@ -29,8 +29,8 @@ window.onload = function() {
             imageElement.src = 'happy_picture.jpeg';
             daysLeftElement.textContent = "Happy birthday Johannaaaaaaaa!";
             createEmojiRain(['🎊', '🎉', '🍸', '🍹', '🍾', '👯‍♀️', '🎂', '🥳', '🎆']);
-        } else if (now.getMonth() == 7 && now.getDate() == 3) {
-            messageElement.textContent = "No, it's not the 4th of March yet. But it's 3rd August and we are celebrating. Johanna is 11111 days old tomorrow!!! 🥳";
+        } else if (now.getMonth() == 7 && now.getDate() == 4) {
+            messageElement.textContent = "No, it's not the 4th of March yet. But it's 4th August. Johanna is 11111 days old today!!! 🥳";
             imageElement.src = 'happy_picture.jpeg';
             daysLeftElement.textContent = "And only " + days + " days, " + hours + " hours, " + mins + " minutes, and " + secs + " seconds left till 4th March!";
             createEmojiRain(['🎊', '🎉', '🍸', '🍹', '🍾', '👯‍♀️', '🎂', '🥳', '🎆']);
