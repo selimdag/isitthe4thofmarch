@@ -16,12 +16,12 @@ function App() {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      
+     
       // TESTING ONLY: Set February 28th as the birthday
-      // setIsBirthday(now.getMonth() === 1 && now.getDate() === 28);
+      setIsBirthday(now.getMonth() === 2 && now.getDate() === 1);
       
       // PRODUCTION: Use this line instead when going live
-      setIsBirthday(now.getMonth() === 2 && now.getDate() === 4);
+      // setIsBirthday(now.getMonth() === 2 && now.getDate() === 4);
       
       // Still calculate countdown to March 4th for display purposes
       const birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
