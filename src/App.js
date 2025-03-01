@@ -9,7 +9,7 @@ function App() {
   const checkIfBirthday = () => {    
 
     const now = new Date();
-    return now.getMonth() === 2 && now.getDate() === 4; // March 4th (2 is March)
+    return now.getMonth() === 2 && now.getDate() === 1; // March 4th (2 is March)
   };
 
   const [isBirthday, setIsBirthday] = useState(checkIfBirthday());

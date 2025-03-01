@@ -124,12 +124,11 @@ h1 {
 .slideshow-container {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  height: 300px;
+  max-width: 700px;
+  height: 550px;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* Removed: border-radius, box-shadow, and background-color */
 }
 
 .slideshow-image {
@@ -138,7 +137,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
@@ -147,17 +146,17 @@ h1 {
   opacity: 1;
 }
 
-/* Make sure the slideshow is responsive */
+/* Updated responsive sizes */
 @media (max-width: 768px) {
   .slideshow-container {
-    max-width: 300px;
-    height: 225px;
+    max-width: 550px;
+    height: 450px;
   }
 }
 
 @media (max-width: 480px) {
   .slideshow-container {
-    max-width: 200px;
-    height: 150px;
+    max-width: 320px;
+    height: 300px;
   }
 }

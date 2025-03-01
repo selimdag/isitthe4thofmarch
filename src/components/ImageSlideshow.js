@@ -40,6 +40,7 @@ function ImageSlideshow({ images, interval = 5000, isActive = true }) {
   return (
     <div className="slideshow-container">
       {images.map((image, index) => (
+        // eslint-disable-next-line jsx-a11y/img-redundant-alt
         <img
           key={index}
           src={image}
@@ -47,7 +48,8 @@ function ImageSlideshow({ images, interval = 5000, isActive = true }) {
           className={`slideshow-image ${index === currentIndex ? 'active' : ''}`}
           style={{ 
             opacity: index === currentIndex ? 1 : 0,
-            transition: 'opacity 1s ease-in-out'
+            transition: 'opacity 1s ease-in-out',
+            objectFit: 'contain' // Changed from 'cover' to 'contain'
           }}
         />
       ))}
