@@ -1,4 +1,3 @@
-/* App.css */
 body {
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(to bottom right, #FFD1DC, #FFE5EC);
@@ -128,7 +127,6 @@ h1 {
   height: 550px;
   margin: 0 auto;
   overflow: hidden;
-  /* Removed: border-radius, box-shadow, and background-color */
 }
 
 .slideshow-image {
@@ -146,7 +144,6 @@ h1 {
   opacity: 1;
 }
 
-/* Updated responsive sizes */
 @media (max-width: 768px) {
   .slideshow-container {
     max-width: 550px;
