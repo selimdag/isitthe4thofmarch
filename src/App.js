@@ -1,4 +1,3 @@
-// App.js - Main component
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import BirthdayMessage from './components/BirthdayMessage';
@@ -17,9 +16,15 @@ function App() {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      const birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
       
-      // If today's date is past March 4th, set the birthday to next year's March 4th
+      // TESTING ONLY: Set February 28th as the birthday
+      // setIsBirthday(now.getMonth() === 1 && now.getDate() === 28);
+      
+      // PRODUCTION: Use this line instead when going live
+      setIsBirthday(now.getMonth() === 2 && now.getDate() === 4);
+      
+      // Still calculate countdown to March 4th for display purposes
+      const birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
       if (now > birthday) {
         birthday.setFullYear(birthday.getFullYear() + 1);
       }
@@ -31,7 +36,6 @@ function App() {
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
       setTimeLeft({ days, hours, minutes, seconds });
-      setIsBirthday(now.getMonth() === 2 && now.getDate() === 4);
     }, 1000);
 
     return () => clearInterval(timer);
