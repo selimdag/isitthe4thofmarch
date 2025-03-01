@@ -5,7 +5,14 @@ import Countdown from './components/Countdown';
 import EmojiRain from './components/EmojiRain';
 
 function App() {
-  const [isBirthday, setIsBirthday] = useState(false);
+  // A single, consistent function to check birthday
+  const checkIfBirthday = () => {    
+
+    const now = new Date();
+    return now.getMonth() === 2 && now.getDate() === 4; // March 4th (2 is March)
+  };
+
+  const [isBirthday, setIsBirthday] = useState(checkIfBirthday());
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -16,14 +23,11 @@ function App() {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-     
-      // TESTING ONLY: Set February 28th as the birthday
-      // setIsBirthday(now.getMonth() === 2 && now.getDate() === 1);
       
-      // PRODUCTION: Use this line instead when going live
-      setIsBirthday(now.getMonth() === 2 && now.getDate() === 4);
+      // Use the same function for consistency
+      setIsBirthday(checkIfBirthday());
       
-      // Still calculate countdown to March 4th for display purposes
+      // Calculate countdown to March 4th (this still shows the countdown)
       const birthday = new Date(now.getFullYear(), 2, 4); // Month is 0-indexed, so 2 is March
       if (now > birthday) {
         birthday.setFullYear(birthday.getFullYear() + 1);
