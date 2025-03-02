@@ -50,7 +50,7 @@ function BirthdayMessage({ isBirthday }) {
       <h1>
         {isBirthday
           ? "Yes, today is the 4th of March! 🎉🎂🎈"
-          : "No, it's not the 4th of March yet. 🙄"}
+          : "No, it's not the 4th of March yet. 🫣"}
       </h1>
       
       {isBirthday ? (

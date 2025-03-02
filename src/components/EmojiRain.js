@@ -6,8 +6,8 @@ function EmojiRain({ isBirthday }) {
   const emojisRef = useRef([]);
   const maxEmojis = 100;
   
-  const happyEmojis = ['🎊', '🎉', '🍸', '🍹', '🍾', '👯‍♀️', '🎂', '🥳', '🎆'];
-  const sadEmojis = ['🥺', '😔', '🙄', '😒', '😞'];
+  const happyEmojis = ['🎊', '🎉', '🍸', '🍹', '👯‍♀️', '🎂', '🥳', '🎆'];
+  const sadEmojis = ['🥺', '🙄', '😒', '😞','🫣'];
   
   useEffect(() => {
     const container = containerRef.current;
