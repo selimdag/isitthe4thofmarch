@@ -8,7 +8,7 @@ function Countdown({ isBirthday, timeLeft }) {
     <div className="countdown-container">
       <h2 className="countdown">
         {isBirthday
-          ? "Happy birthday Johannaaaaaa! 🎉"
+          ? "Happy birthday, Johannaaaaaa! 🎉"
           : `But only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left!`}
       </h2>
       
