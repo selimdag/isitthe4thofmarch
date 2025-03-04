@@ -14,7 +14,7 @@ function Countdown({ isBirthday, timeLeft }) {
       
       {isBirthday && (
         <h3 className="additional-birthday-message">
-          And all the other nice people around the world, who have birthdays today! 🥳
+          And all the other nice people around the world whose birthday is today! 🥳
         </h3>
       )}
     </div>
