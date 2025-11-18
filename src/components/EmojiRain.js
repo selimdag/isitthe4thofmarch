@@ -1,19 +1,26 @@
 // components/EmojiRain.js
 import React, { useEffect, useRef } from 'react';
 
-function EmojiRain({ isBirthday }) {
+function EmojiRain({ isBirthday, isChristmas }) {
   const containerRef = useRef(null);
   const emojisRef = useRef([]);
   const maxEmojis = 100;
   
   const happyEmojis = ['🎊', '🎉', '🍸', '🍹', '👯‍♀️', '🎂', '🥳', '🎆'];
   const sadEmojis = ['🥺', '🙄', '😒', '😞','🫣'];
+  const snowflakes = ['❄️', '⛄', '🎄', '🎅', '❆', '🎁', '⭐', '✨'];
   
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
     
-    const emojis = isBirthday ? happyEmojis : sadEmojis;
+    // Choose emojis based on the season and birthday status
+    let emojis;
+    if (isChristmas) {
+      emojis = snowflakes;
+    } else {
+      emojis = isBirthday ? happyEmojis : sadEmojis;
+    }
     
     const interval = setInterval(() => {
       // Remove excess emojis
@@ -28,10 +35,16 @@ function EmojiRain({ isBirthday }) {
       if (emojisRef.current.length < maxEmojis) {
         const emoji = emojis[Math.floor(Math.random() * emojis.length)];
         const emojiElement = document.createElement('div');
-        emojiElement.className = 'emoji';
+        emojiElement.className = isChristmas ? 'emoji snow' : 'emoji';
         emojiElement.style.left = `${Math.random() * 100}vw`;
         emojiElement.style.animationDuration = `${10 + Math.random() * 5}s`;
         emojiElement.textContent = emoji;
+        
+        // Add horizontal drift for snow effect
+        if (isChristmas) {
+          const drift = (Math.random() - 0.5) * 100;
+          emojiElement.style.setProperty('--drift', `${drift}px`);
+        }
         
         // Remove emoji after animation
         emojiElement.addEventListener('animationend', () => {
@@ -50,7 +63,7 @@ function EmojiRain({ isBirthday }) {
     }, 200);
     
     return () => clearInterval(interval);
-  }, [isBirthday]);
+  }, [isBirthday, isChristmas]);
   
   return <div ref={containerRef} className="emoji-rain"></div>;
 }

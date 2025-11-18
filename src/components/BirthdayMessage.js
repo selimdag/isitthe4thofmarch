@@ -1,8 +1,9 @@
 import React from 'react';
 import ImageSlideshow from './ImageSlideshow';
 import sadPicture from '../assets/sad_picture.jpeg';
+import christmasPicture from '../assets/christmas_picture.jpg';
 
-// Import all your happy images
+// Import all happy images
 import happyPicture1 from '../assets/happy_picture1.jpeg';
 import happyPicture2 from '../assets/happy_picture2.jpeg';
 import happyPicture3 from '../assets/happy_picture3.jpeg';
@@ -22,7 +23,7 @@ import happyPicture16 from '../assets/happy_picture16.jpeg';
 import happyPicture17 from '../assets/happy_picture17.jpeg';
 import happyPicture18 from '../assets/happy_picture18.jpeg';
 
-function BirthdayMessage({ isBirthday }) {
+function BirthdayMessage({ isBirthday, isChristmas }) {
   // Array of happy images for the slideshow
   const happyImages = [
     happyPicture1,
@@ -45,19 +46,32 @@ function BirthdayMessage({ isBirthday }) {
     happyPicture18
   ];
 
+  // Determine the headline text
+  const getHeadlineText = () => {
+    if (isBirthday) {
+      return "Yes, today is the 4th of March! 🎉🎂🎈";
+    } else if (isChristmas) {
+      return "No, it's not the 4th of March yet. But it's almost Christmas!";
+    } else {
+      return "No, it's not the 4th of March yet. 🫣";
+    }
+  };
+
   return (
     <div className="birthday-message">
-      <h1>
-        {isBirthday
-          ? "Yes, today is the 4th of March! 🎉🎂🎈"
-          : "No, it's not the 4th of March yet. 🫣"}
-      </h1>
+      <h1>{getHeadlineText()}</h1>
       
       {isBirthday ? (
         <ImageSlideshow 
           images={happyImages} 
           interval={5000} 
           isActive={true} 
+        />
+      ) : isChristmas ? (
+        <img 
+          src={christmasPicture} 
+          alt="Christmas time" 
+          className="birthday-image"
         />
       ) : (
         <img 
