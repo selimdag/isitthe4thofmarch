@@ -8,7 +8,7 @@ function EmojiRain({ isBirthday, isChristmas }) {
   
   const happyEmojis = ['🎊', '🎉', '🍸', '🍹', '👯‍♀️', '🎂', '🥳', '🎆'];
   const sadEmojis = ['🥺', '🙄', '😒', '😞','🫣'];
-  const snowflakes = ['❄️', '⛄', '🎄', '🎅', '❆', '🎁', '⭐', '✨'];
+  const snowflakes = ['❄️', '⛄', '🎄', '🎅', '❆', '🎁', '⭐', '✨','❄️','❄️'];
   
   useEffect(() => {
     const container = containerRef.current;
