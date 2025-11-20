@@ -9,7 +9,7 @@ function Countdown({ isBirthday, timeLeft, christmasPhase }) {
     if (isBirthday) {
       return "Happy birthday, Johannaaaaaa! 🎉";
     } else if (christmasPhase === 'almost' || christmasPhase === 'is') {
-      return `And only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left to the 4th of March!`;
+      return `And only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left until the 4th of March!`;
     } else {
       return `But only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left!`;
     }
