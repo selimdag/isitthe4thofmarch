@@ -3,7 +3,7 @@ import ImageSlideshow from './ImageSlideshow';
 import sadPicture from '../assets/sad_picture.jpeg';
 import christmasPicture from '../assets/christmas_picture.jpg';
 
-// Import all happy images
+// Import all your happy images
 import happyPicture1 from '../assets/happy_picture1.jpeg';
 import happyPicture2 from '../assets/happy_picture2.jpeg';
 import happyPicture3 from '../assets/happy_picture3.jpeg';
@@ -23,7 +23,7 @@ import happyPicture16 from '../assets/happy_picture16.jpeg';
 import happyPicture17 from '../assets/happy_picture17.jpeg';
 import happyPicture18 from '../assets/happy_picture18.jpeg';
 
-function BirthdayMessage({ isBirthday, isChristmas }) {
+function BirthdayMessage({ isBirthday, christmasPhase }) {
   // Array of happy images for the slideshow
   const happyImages = [
     happyPicture1,
@@ -50,8 +50,10 @@ function BirthdayMessage({ isBirthday, isChristmas }) {
   const getHeadlineText = () => {
     if (isBirthday) {
       return "Yes, today is the 4th of March! 🎉🎂🎈";
-    } else if (isChristmas) {
+    } else if (christmasPhase === 'almost') {
       return "No, it's not the 4th of March yet. But it's almost Christmas!";
+    } else if (christmasPhase === 'is') {
+      return "No, it's not the 4th of March yet. But it's Christmas!";
     } else {
       return "No, it's not the 4th of March yet. 🫣";
     }
@@ -67,7 +69,7 @@ function BirthdayMessage({ isBirthday, isChristmas }) {
           interval={5000} 
           isActive={true} 
         />
-      ) : isChristmas ? (
+      ) : (christmasPhase === 'almost' || christmasPhase === 'is') ? (
         <img 
           src={christmasPicture} 
           alt="Christmas time" 

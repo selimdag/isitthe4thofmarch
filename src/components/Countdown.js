@@ -1,14 +1,14 @@
 // components/Countdown.js
 import React from 'react';
 
-function Countdown({ isBirthday, timeLeft, isChristmas }) {
+function Countdown({ isBirthday, timeLeft, christmasPhase }) {
   const { days, hours, minutes, seconds } = timeLeft;
   
   // Determine the countdown text
   const getCountdownText = () => {
     if (isBirthday) {
       return "Happy birthday, Johannaaaaaa! 🎉";
-    } else if (isChristmas) {
+    } else if (christmasPhase === 'almost' || christmasPhase === 'is') {
       return `And only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left to the 4th of March!`;
     } else {
       return `But only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left!`;

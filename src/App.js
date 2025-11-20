@@ -15,10 +15,7 @@ function App() {
     const month = now.getMonth();
     const day = now.getDate();
     
-    // Christmas period: November 17th to January 7th
-    // November (month 10) from day 17 onwards
-    // December (month 11) all days
-    // January (month 0) up to day 7
+    // Christmas period: November 17th to January 7th (for styling)
     return (
       (month === 10 && day >= 17) || // November 17-30
       month === 11 ||                 // All of December
@@ -26,8 +23,27 @@ function App() {
     );
   };
 
+  const getChristmasPhase = () => {
+    const now = new Date();
+    const month = now.getMonth();
+    const day = now.getDate();
+    
+    // "almost" - November 17th to December 22nd
+    if ((month === 10 && day >= 17) || (month === 11 && day <= 22)) {
+      return 'almost';
+    }
+    
+    // "is" - December 23rd to January 7th
+    if ((month === 11 && day >= 23) || (month === 0 && day <= 7)) {
+      return 'is';
+    }
+    
+    return 'none';
+  };
+
   const [isBirthday, setIsBirthday] = useState(checkIfBirthday());
   const [isChristmas, setIsChristmas] = useState(checkIfChristmas());
+  const [christmasPhase, setChristmasPhase] = useState(getChristmasPhase());
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -41,6 +57,7 @@ function App() {
       
       setIsBirthday(checkIfBirthday());
       setIsChristmas(checkIfChristmas());
+      setChristmasPhase(getChristmasPhase());
       
       const birthday = new Date(now.getFullYear(), 2, 4);
       if (now > birthday) {
@@ -62,8 +79,8 @@ function App() {
   return (
     <div className={`app ${isChristmas ? 'christmas-theme' : ''}`}>
       <div className="content">
-        <BirthdayMessage isBirthday={isBirthday} isChristmas={isChristmas} />
-        <Countdown isBirthday={isBirthday} timeLeft={timeLeft} isChristmas={isChristmas} />
+        <BirthdayMessage isBirthday={isBirthday} christmasPhase={christmasPhase} />
+        <Countdown isBirthday={isBirthday} timeLeft={timeLeft} christmasPhase={christmasPhase} />
       </div>
       <EmojiRain isBirthday={isBirthday} isChristmas={isChristmas} />
     </div>
